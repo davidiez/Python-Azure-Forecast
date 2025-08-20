@@ -34,6 +34,7 @@ decomposition = seasonal_decompose(daily_cost['y'], model='additive', period=30)
 # Plot components
 plt.figure(figsize=(12, 8))
 
+#Observed
 plt.subplot(411)
 plt.plot(decomposition.observed)
 plt.title('Observed')
@@ -41,20 +42,23 @@ plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
 plt.grid(True)
 
+#Trend
 plt.subplot(412)
-plt.plot(decomposition.trend, color='orange')
+plt.plot(decomposition.trend, color='green')
 plt.title('Trend')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
 plt.grid(True)
 
+#Seasonal
 plt.subplot(413)
-plt.plot(decomposition.seasonal, color='green')
+plt.plot(decomposition.seasonal, color='purple')
 plt.title('Seasonal')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
 plt.grid(True)
 
+#Residual
 plt.subplot(414)
 plt.plot(decomposition.resid, color='red')
 plt.title('Residual')
