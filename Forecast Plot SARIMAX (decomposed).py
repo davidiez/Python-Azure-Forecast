@@ -1,5 +1,5 @@
 # Python script to generate the decomposed view of a forecasted plot (using 'statsmodels' SARIMAX model) of 60-day period. It will show 4 plots: obeserved, trend, seasional and residual data.
-# To be used in any Power BI dashboard, getting as dataset an Amazon billing data in FOCUS format.
+# To be used in any Power BI dashboard, getting as dataset an Azure billing data in FOCUS format.
 
 # Install Prophet if needed
 # pip install prophet
@@ -39,24 +39,28 @@ plt.plot(decomposition.observed)
 plt.title('Observed')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
+plt.grid(True)
 
 plt.subplot(412)
 plt.plot(decomposition.trend, color='orange')
 plt.title('Trend')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
+plt.grid(True)
 
 plt.subplot(413)
 plt.plot(decomposition.seasonal, color='green')
 plt.title('Seasonal')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
+plt.grid(True)
 
 plt.subplot(414)
 plt.plot(decomposition.resid, color='red')
 plt.title('Residual')
 plt.ylabel('Cost (NOK)')
 plt.gca().yaxis.set_major_formatter(FuncFormatter(thousands))
+plt.grid(True)
 
 plt.tight_layout()
 plt.show()
